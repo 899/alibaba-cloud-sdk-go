@@ -28,7 +28,10 @@ import (
 )
 
 func GetUUIDV4() (uuidHex string) {
-	uuidV4 := uuid.NewV4()
+	uuidV4, err := uuid.NewV4()
+	if err != nil {
+		panic(err)
+	}
 	uuidHex = hex.EncodeToString(uuidV4.Bytes())
 	return
 }
